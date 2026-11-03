@@ -187,7 +187,22 @@ h1 {
 
     letter-spacing: 2px;
     white-space: nowrap;
-    margin-bottom: 65px;
+    margin-bottom: 25px;
+}
+
+/* PENAL ISPOD TAJMERA */
+
+.penal {
+    font-size: 28px;
+    color: #b00018;
+    font-weight: bold;
+    letter-spacing: 2px;
+
+    text-shadow:
+        0 0 10px #b00018,
+        0 0 25px #65000b;
+
+    margin-bottom: 45px;
 }
 
 .coffee {
@@ -231,8 +246,13 @@ h1 {
     }
 
     .timer {
-        margin-bottom: 55px;
+        margin-bottom: 25px;
         letter-spacing: 0;
+    }
+
+    .penal {
+        font-size: 23px;
+        margin-bottom: 40px;
     }
 
     .coffee {
@@ -256,25 +276,15 @@ h1 {
 <div class="blood-background">
 
     <span class="drip" style="--left:2%;--width:22px;--height:250px;--speed:11s;--delay:0s"></span>
-
     <span class="drip" style="--left:10%;--width:35px;--height:350px;--speed:15s;--delay:3s"></span>
-
     <span class="drip" style="--left:19%;--width:18px;--height:180px;--speed:9s;--delay:5s"></span>
-
     <span class="drip" style="--left:29%;--width:28px;--height:300px;--speed:13s;--delay:2s"></span>
-
     <span class="drip" style="--left:39%;--width:40px;--height:400px;--speed:17s;--delay:6s"></span>
-
     <span class="drip" style="--left:49%;--width:20px;--height:220px;--speed:10s;--delay:1s"></span>
-
     <span class="drip" style="--left:59%;--width:32px;--height:330px;--speed:14s;--delay:4s"></span>
-
     <span class="drip" style="--left:69%;--width:24px;--height:260px;--speed:12s;--delay:7s"></span>
-
     <span class="drip" style="--left:79%;--width:38px;--height:380px;--speed:16s;--delay:2s"></span>
-
     <span class="drip" style="--left:89%;--width:25px;--height:290px;--speed:12s;--delay:5s"></span>
-
     <span class="drip" style="--left:97%;--width:30px;--height:350px;--speed:15s;--delay:8s"></span>
 
 </div>
@@ -287,6 +297,10 @@ h1 {
 
     <div class="timer" id="timer">
         720h 00m 00s
+    </div>
+
+    <div class="penal">
+        Penal: 160 €
     </div>
 
     <a class="coffee"
@@ -345,7 +359,6 @@ const music = document.getElementById("horrorMusic");
 
 music.volume = 0.35;
 
-// Pokušaj automatskog pokretanja
 function startHorrorMusic() {
 
     if (music.paused) {
@@ -356,9 +369,6 @@ function startHorrorMusic() {
 }
 
 startHorrorMusic();
-
-// Ako pregledač blokira autoplay,
-// muzika kreće nakon prve interakcije.
 
 function unlockMusic() {
 
