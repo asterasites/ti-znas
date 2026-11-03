@@ -28,6 +28,8 @@ body {
     position: relative;
 }
 
+/* MISTIČNA CRVENA ATMOSFERA */
+
 body::before {
     content: "";
     position: fixed;
@@ -37,12 +39,15 @@ body::before {
         radial-gradient(circle at 80% 70%, #76001522, transparent 40%);
     pointer-events: none;
     animation: pulse 5s infinite alternate;
+    z-index: 1;
 }
 
 @keyframes pulse {
     from { opacity: 0.3; }
     to { opacity: 1; }
 }
+
+/* FILM GRAIN EFEKAT */
 
 body::after {
     content: "";
@@ -55,7 +60,89 @@ body::after {
         transparent 4px
     );
     pointer-events: none;
+    z-index: 3;
 }
+
+/* ANIMIRANA KRV */
+
+.blood-background {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(9px);
+    opacity: 0.8;
+}
+
+.drip {
+    position: absolute;
+    top: -350px;
+    left: var(--left);
+    width: var(--width);
+    height: var(--height);
+
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        #390006 10%,
+        #70000d 40%,
+        #a00018 75%,
+        #400007 100%
+    );
+
+    border-radius: 0 0 50% 50%;
+
+    box-shadow:
+        0 0 15px #8b001b,
+        0 0 35px #65000d;
+
+    animation:
+        bloodFall var(--speed) linear infinite;
+
+    animation-delay: var(--delay);
+}
+
+/* KAPI KRVI */
+
+.drip::after {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(var(--width) * 2);
+    height: calc(var(--width) * 2);
+
+    background: #850012;
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 20px #a00018,
+        0 0 35px #69000c;
+}
+
+@keyframes bloodFall {
+    0% {
+        transform: translateY(-150px);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.9;
+    }
+
+    80% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(150vh);
+        opacity: 0;
+    }
+}
+
+/* GLAVNI SADRŽAJ */
 
 .container {
     text-align: center;
@@ -63,6 +150,7 @@ body::after {
     max-width: 1000px;
     z-index: 2;
     padding: 20px;
+    position: relative;
 }
 
 h1 {
@@ -70,10 +158,12 @@ h1 {
     color: #b00018;
     font-size: clamp(65px, 12vw, 125px);
     letter-spacing: 7px;
+
     text-shadow:
         0 0 10px #b00018,
         0 0 30px #65000b,
         0 0 60px #350006;
+
     margin-bottom: 55px;
     animation: flicker 4s infinite;
 }
@@ -90,9 +180,11 @@ h1 {
 .timer {
     font-size: clamp(38px, 9vw, 100px);
     color: #e4dada;
+
     text-shadow:
         0 0 15px #850016,
         0 0 35px #59000c;
+
     letter-spacing: 2px;
     white-space: nowrap;
     margin-bottom: 65px;
@@ -102,12 +194,19 @@ h1 {
     display: inline-block;
     padding: 18px 38px;
     color: #fff;
-    background: linear-gradient(145deg, #780014, #310008);
+
+    background: linear-gradient(
+        145deg,
+        #780014,
+        #310008
+    );
+
     border: 1px solid #a0001b;
     border-radius: 5px;
     text-decoration: none;
     font-size: 17px;
     letter-spacing: 2px;
+
     box-shadow: 0 0 20px #79001566;
     transition: 0.3s;
 }
@@ -146,6 +245,36 @@ h1 {
 
 <body>
 
+<!-- KRVAVA POZADINA -->
+
+<div class="blood-background">
+
+    <span class="drip" style="--left:2%;--width:22px;--height:250px;--speed:11s;--delay:0s"></span>
+
+    <span class="drip" style="--left:10%;--width:35px;--height:350px;--speed:15s;--delay:3s"></span>
+
+    <span class="drip" style="--left:19%;--width:18px;--height:180px;--speed:9s;--delay:5s"></span>
+
+    <span class="drip" style="--left:29%;--width:28px;--height:300px;--speed:13s;--delay:2s"></span>
+
+    <span class="drip" style="--left:39%;--width:40px;--height:400px;--speed:17s;--delay:6s"></span>
+
+    <span class="drip" style="--left:49%;--width:20px;--height:220px;--speed:10s;--delay:1s"></span>
+
+    <span class="drip" style="--left:59%;--width:32px;--height:330px;--speed:14s;--delay:4s"></span>
+
+    <span class="drip" style="--left:69%;--width:24px;--height:260px;--speed:12s;--delay:7s"></span>
+
+    <span class="drip" style="--left:79%;--width:38px;--height:380px;--speed:16s;--delay:2s"></span>
+
+    <span class="drip" style="--left:89%;--width:25px;--height:290px;--speed:12s;--delay:5s"></span>
+
+    <span class="drip" style="--left:97%;--width:30px;--height:350px;--speed:15s;--delay:8s"></span>
+
+</div>
+
+<!-- GLAVNI SAJT -->
+
 <div class="container">
 
     <h1>TI ZNAŠ!</h1>
@@ -158,7 +287,7 @@ h1 {
        href="https://www.paypal.me/gudrash"
        target="_blank"
        rel="noopener noreferrer">
-       DODAJ 30d <3
+       DODAJ 30d &lt;3
     </a>
 
     <div class="subtitle">
@@ -173,13 +302,9 @@ h1 {
 // ZAJEDNIČKI TAJMER ZA SVE POSETIOCE
 // =====================================
 
-// Početak: 3. novembar 2026. u 12:10
-// Kraj: 3. decembar 2026. u 12:10
-
 const deadline = new Date(
     "2026-12-03T12:10:00+01:00"
 ).getTime();
-
 
 function updateTimer() {
 
