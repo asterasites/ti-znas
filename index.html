@@ -245,6 +245,12 @@ h1 {
 
 <body>
 
+<!-- MUZIKA U POZADINI -->
+
+<audio id="horrorMusic" autoplay loop preload="auto">
+    <source src="./horror.mp3" type="audio/mpeg">
+</audio>
+
 <!-- KRVAVA POZADINA -->
 
 <div class="blood-background">
@@ -329,6 +335,43 @@ function updateTimer() {
 updateTimer();
 
 setInterval(updateTimer, 1000);
+
+
+// =====================================
+// AUTOMATSKA HOROR MUZIKA
+// =====================================
+
+const music = document.getElementById("horrorMusic");
+
+music.volume = 0.35;
+
+// Pokušaj automatskog pokretanja
+function startHorrorMusic() {
+
+    if (music.paused) {
+        music.play().catch(() => {
+            // Pregledač je blokirao automatski zvuk.
+        });
+    }
+}
+
+startHorrorMusic();
+
+// Ako pregledač blokira autoplay,
+// muzika kreće nakon prve interakcije.
+
+function unlockMusic() {
+
+    startHorrorMusic();
+
+    document.removeEventListener("click", unlockMusic);
+    document.removeEventListener("touchstart", unlockMusic);
+    document.removeEventListener("keydown", unlockMusic);
+}
+
+document.addEventListener("click", unlockMusic);
+document.addEventListener("touchstart", unlockMusic);
+document.addEventListener("keydown", unlockMusic);
 
 </script>
 
