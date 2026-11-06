@@ -22,10 +22,12 @@ body {
     color: white;
     display: flex;
     justify-content: center;
-    align-items: center;
-    overflow: hidden;
+    align-items: flex-start;
+    overflow-x: hidden;
+    overflow-y: auto;
     font-family: 'Share Tech Mono', monospace;
     position: relative;
+    padding: 40px 0;
 }
 
 /* MISTIČNA CRVENA ATMOSFERA */
@@ -97,9 +99,7 @@ body::after {
         0 0 15px #8b001b,
         0 0 35px #65000d;
 
-    animation:
-        bloodFall var(--speed) linear infinite;
-
+    animation: bloodFall var(--speed) linear infinite;
     animation-delay: var(--delay);
 }
 
@@ -177,6 +177,8 @@ h1 {
     }
 }
 
+/* TAJMER */
+
 .timer {
     font-size: clamp(38px, 9vw, 100px);
     color: #e4dada;
@@ -205,6 +207,8 @@ h1 {
     margin-bottom: 45px;
 }
 
+/* PAYPAL DUGME */
+
 .coffee {
     display: inline-block;
     padding: 18px 38px;
@@ -232,14 +236,56 @@ h1 {
     transform: scale(1.06);
 }
 
+/* MISTIČNI TEKST */
+
 .subtitle {
-    color: #66545a;
-    margin-top: 45px;
-    font-size: 12px;
-    letter-spacing: 4px;
+    color: #9a858b;
+    margin: 55px auto 0;
+    font-size: 15px;
+    line-height: 2;
+    letter-spacing: 1px;
+    max-width: 800px;
+    white-space: pre-line;
+    text-shadow: 0 0 10px #65000b;
+}
+
+/* VIDEO NA DNU STRANICE */
+
+.video-section {
+    width: 100%;
+    max-width: 750px;
+    margin: 65px auto 20px;
+    border: 1px solid #70000d;
+    border-radius: 5px;
+    overflow: hidden;
+
+    box-shadow:
+        0 0 15px #850016,
+        0 0 35px #450008;
+}
+
+.video-section video {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* NASLOV IZNAD VIDEA */
+
+.video-title {
+    color: #b00018;
+    font-family: 'Creepster', cursive;
+    font-size: 32px;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 15px #850016;
 }
 
 @media(max-width: 500px) {
+    body {
+        padding: 25px 0;
+    }
+
     h1 {
         margin-bottom: 45px;
         letter-spacing: 3px;
@@ -258,6 +304,20 @@ h1 {
     .coffee {
         font-size: 14px;
         padding: 16px 25px;
+    }
+
+    .subtitle {
+        font-size: 13px;
+        line-height: 1.8;
+        margin-top: 45px;
+    }
+
+    .video-section {
+        margin-top: 45px;
+    }
+
+    .video-title {
+        font-size: 27px;
     }
 }
 </style>
@@ -310,16 +370,15 @@ h1 {
        DODAJ 30d &lt;3
     </a>
 
-    <div class="subtitle">
-        Ovde se od malih nogu uči da nepoštovanje ima svoju cenu, a svaki dug svoj način naplate.
+    <div class="subtitle">Ovde se od malih nogu uči da nepoštovanje ima svoju cenu, a svaki dug svoj način naplate.
 
 Ovde reči ne nestaju u vazduhu, obećanja ne blede, a granice nisu postavljene da bi se isprobavale.
 
 Ako se nalaziš ovde, znaj jedno — prešao si granicu iza koje više ništa nije isto.
 
 Vreme ne briše ono što je ostavljeno iza sebe. Tišina ne znači zaborav, a odsustvo reakcije ne znači odsustvo posledica.
-        
-        Ovde se odavno zna da ništa nije besplatno. Čak i tišina ima svoju cenu.
+
+Ovde se odavno zna da ništa nije besplatno. Čak i tišina ima svoju cenu.
 
 Ako čitaš ove redove možda si već zakoračio predaleko.
 
@@ -329,7 +388,21 @@ I zapamti...
 
 Nije svako odbrojavanje namenjeno da najavi kraj.
 
-Ponekad najavljuje početak nečega što je odavno čekalo.
+Ponekad najavljuje početak nečega što je odavno čekalo.</div>
+
+    <!-- VIDEO NA DNU STRANICE -->
+
+    <div class="video-section">
+
+        <div class="video-title">
+            NEKE STVARI JE BOLJE NE VIDETI.
+        </div>
+
+        <video autoplay loop muted playsinline preload="auto">
+            <source src="./horror-video.mp4" type="video/mp4">
+            Tvoj pregledač ne podržava video.
+        </video>
+
     </div>
 
 </div>
